@@ -1,4 +1,3 @@
-
 @MainActor
 class TerminalController {
     enum Printer { case none, tick, display }
@@ -14,5 +13,4 @@ class TerminalController {
             """)
         lastPrint = .display
     }
-    deinit { print("Deiniting TerminalController")}
 }

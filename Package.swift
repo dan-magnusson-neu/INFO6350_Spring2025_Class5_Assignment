@@ -6,8 +6,5 @@ import PackageDescription
 let package = Package(
     name: "ConcurrentReminders",
     platforms: [.macOS("13.0")],
-    targets: [
-        .executableTarget(
-            name: "ConcurrentReminders"),
-    ]
+    targets: [.executableTarget(name: "ConcurrentReminders")]
 )

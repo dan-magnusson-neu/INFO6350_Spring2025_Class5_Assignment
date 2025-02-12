@@ -9,12 +9,14 @@ actor ReminderManager {
     }
     
     func run() async {
-        await withThrowingTaskGroup(of: Void.self) { group in
+        try? await withThrowingTaskGroup(of: Reminder.self) { group in
             for key in reminders.keys {
                 group.addTask {
-                    let reminder = try await self.delayedReminder(with: key)
-                    await self.terminal.display(reminder)
+                    try await self.delayedReminder(with: key)
                 }
+            }
+            for try await reminder in group {
+                await terminal.display(reminder)
             }
         }
         print("\nReminders all sent!")
